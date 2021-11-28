@@ -1,0 +1,7 @@
+cffi==1.15.0
+cryptography==36.0.0
+prettytable==2.4.0
+pycparser==2.21
+PyMySQL==1.0.2
+python-dotenv==0.19.2
+wcwidth==0.2.5
