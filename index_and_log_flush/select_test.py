@@ -24,7 +24,6 @@ print_table(
      ['SELECT RANGE with btree index', select_from_db(select_range_sql.format('birth_date'))]])
 
 
-
 # start_time = datetime.datetime.now()
 # cursor.execute(select_range_sql.format('date_joined'))
 # cursor.fetchall()

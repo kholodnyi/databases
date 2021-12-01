@@ -1,0 +1,36 @@
+---
+version: "3.7"
+services:
+  mysql_db:
+    image: percona:latest
+    container_name: mysql_db
+    restart: unless-stopped
+    env_file:
+      - 'env.percona'
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./percona/db:/data/db:rw
+      - ./percona_init.sql:/docker-entrypoint-initdb.d/percona_init.sql:ro
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 256M
+
+  postgresql:
+    image: postgres:latest
+    container_name: postgresql
+    restart: unless-stopped
+    env_file:
+      - 'env.postgres'
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./postgresql/db:/data/db:rw
+      - ./postgres_init.sql:/docker-entrypoint-initdb.d/postgres_init.sql:ro
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 256M

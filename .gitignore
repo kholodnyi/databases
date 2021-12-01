@@ -123,6 +123,10 @@ venv.bak/
 ### Python Patch ###
 .venv/
 .idea/
-mysql/db/*
-mysql_init.sql
+
+# docker
 env.*
+
+# index_and_log_flush
+index_and_log_flush/mysql/db/*
+mysql_init.sql
