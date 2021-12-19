@@ -1,0 +1,25 @@
+---
+version: '3.7'
+services:
+  beanstalkd:
+    image: schickling/beanstalkd
+    ports:
+      - '11300:11300'
+
+  redis-rdb:
+    container_name: redis-rdb
+    image: redis:latest
+    command: redis-server --port 6380
+    ports:
+      - '6380:6380'
+    volumes:
+      - ./redis_rdb/redis.conf:/usr/local/etc/redis/redis.conf:ro
+
+  redis-aof:
+    container_name: redis-aof
+    image: redis:latest
+    command: redis-server --port 6381
+    ports:
+      - '6381:6381'
+    volumes:
+      - ./redis_aof/redis.conf:/usr/local/etc/redis/redis.conf:ro
