@@ -1,0 +1,44 @@
+---
+version: "3.7"
+
+networks:
+  elk:
+    driver: bridge
+    name: elk_stack
+
+services:
+  elasticsearch:
+    image: elasticsearch:7.14.2
+    container_name: elasticsearch
+    restart: unless-stopped
+    ports:
+      - '9200:9200'
+      - '9300:9300'
+    volumes:
+      - ./elasticsearch/db:/elasticsearch/data:rw
+    environment:
+      discovery.type: single-node
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 5126M
+    networks:
+      elk:
+        aliases:
+          - elasticsearch.local
+
+  kibana:
+    image: kibana:7.14.2
+    container_name: kibana
+    restart: unless-stopped
+    ports:
+      - '5602:5601'
+    environment:
+      ELASTICSEARCH_HOSTS: http://elasticsearch.local:9200
+    networks:
+      elk:
+        aliases:
+          - kibana.local
+    depends_on:
+      - elasticsearch
