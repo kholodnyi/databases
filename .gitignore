@@ -133,3 +133,6 @@ mysql_init.sql
 
 # elasticsearch
 elasticsearch/elasticsearch/db/*
+
+# sharding
+sharding/data/*
