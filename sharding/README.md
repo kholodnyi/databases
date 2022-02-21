@@ -3,13 +3,13 @@
 Example of horizontal sharding and how it affects on write (inserting) performance 
 
 ### Requirements:
-
+ - [python](https://www.python.org/) >3.8
  - [docker](https://docs.docker.com/get-docker/) >20.10.7
  - [docker-compose](https://docs.docker.com/compose/install/) >2.1.0
 
 ### Setup
 
-Firstly, need to clone the git repository, navigate to docker-compose file and execute next commands wth sudo rights:  
+Firstly, need to clone the git repository, navigate to docker-compose file and execute next commands with sudo rights:  
 
 ```shell
 docker-compose up -d
